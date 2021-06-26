@@ -1,6 +1,4 @@
-/**
- *Submitted for verification at BscScan.com on 2021-06-20
-*/
+
 
 /*
 ███╗░░░███╗░█████╗░░█████╗░███╗░░██╗░██████╗██╗░░░░░░█████╗░████████╗██╗░░██╗
@@ -463,8 +461,8 @@ contract MoonRise is Context, IERC20, Ownable {
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private _name = "MoonRise";
-    string private _symbol = "MOONRISE";
+    string private _name = "MoonSloth";
+    string private _symbol = "MOONSLOTH";
     uint8 private _decimals = 9;
 
 
@@ -695,12 +693,6 @@ contract MoonRise is Context, IERC20, Ownable {
     }
     
     function callSlothShot(uint256 amount) external onlyOwner(){
-        // MoonShots will be activated at holder milestones during MoonRise's launch phase, but eventually will be controlled through a community-consensus based dApp.
-        // Members will vote on how much BNB should be used in the MoonShot, and when exactly the MoonShot should take place.
-
-        // LIVE HOLDER MILESTONES & MOONSHOT INFO:
-        // - MoonRiseCoin.com
-        // - (Please join our Telegram using the link posted on our website)
         
         buyBackTokens(amount * 10**15); // i.e. "1" would equal 0.001 BNB
     }
