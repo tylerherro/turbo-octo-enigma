@@ -1,31 +1,36 @@
+/**
+ *Submitted for verification at BscScan.com on 2021-06-20
+*/
+
 /*
-███╗░░░███╗░█████╗░░█████╗░███╗░░██╗░██████╗██╗░░░░░░█████╗░████████╗██╗░░██╗
-████╗░████║██╔══██╗██╔══██╗████╗░██║██╔════╝██║░░░░░██╔══██╗╚══██╔══╝██║░░██║
-██╔████╔██║██║░░██║██║░░██║██╔██╗██║╚█████╗░██║░░░░░██║░░██║░░░██║░░░███████║
-██║╚██╔╝██║██║░░██║██║░░██║██║╚████║░╚═══██╗██║░░░░░██║░░██║░░░██║░░░██╔══██║
-██║░╚═╝░██║╚█████╔╝╚█████╔╝██║░╚███║██████╔╝███████╗╚█████╔╝░░░██║░░░██║░░██║
-╚═╝░░░░░╚═╝░╚════╝░░╚════╝░╚═╝░░╚══╝╚═════╝░╚══════╝░╚════╝░░░░╚═╝░░░╚═╝░░╚═╝
 
-➥ MoonSloth is an improved fork of the wildly-successful EverRise token, with improved features and tokenomics.
+███╗░░░███╗░█████╗░░█████╗░███╗░░██╗██████╗░██╗░██████╗███████╗
+████╗░████║██╔══██╗██╔══██╗████╗░██║██╔══██╗██║██╔════╝██╔════╝
+██╔████╔██║██║░░██║██║░░██║██╔██╗██║██████╔╝██║╚█████╗░█████╗░░
+██║╚██╔╝██║██║░░██║██║░░██║██║╚████║██╔══██╗██║░╚═══██╗██╔══╝░░
+██║░╚═╝░██║╚█████╔╝╚█████╔╝██║░╚███║██║░░██║██║██████╔╝███████╗
+╚═╝░░░░░╚═╝░╚════╝░░╚════╝░╚═╝░░╚══╝╚═╝░░╚═╝╚═╝╚═════╝░╚══════╝
 
-➥ On top of never allowing more than two sells to be seen in a row, community members will be able to participate in "Sloth Shots" using the Sloth Wallet's BNB.
-➥ Sloth Shots will be activated at holder milestones during MoonSloth's launch phase, but eventually will be controlled through a community-consensus based dApp.
-➥ Members will vote on how much BNB should be used in the SlothShot, and when exactly the SlothShot should take place. Unlike other coins, we will make sure not to do this all at once and disrupt price action.
+➥ MoonRise is an improved fork of the wildly-successful EverRise token, with a suite of improved features and tokenomics.
 
+➥ On top of never allowing more than two sells to be seen in a row, community members will be able to participate in "Moon Shots" using the Whale Wallet's BNB.
+➥ MoonShots will be activated at holder milestones during MoonRise's launch phase, but eventually will be controlled through a community-consensus based dApp.
+➥ Members will vote on how much BNB should be used in the MoonShot, and when exactly the MoonShot should take place.
 
-
-- Website: MoonSloth.Space
-- Telegram: t.me/MoonSloth
-- Twitter: twitter.com/heyitsMoonSloth
-
+LIVE HOLDER MILESTONES & MOONSHOT INFO:
+- Website: MoonRiseCoin.com
+- Telegram: t.me/MoonRise_BSC
+- Twitter: twitter.com/MoonRise_BSC
+- (All other important links and information can be found in our Telegram!)
 
 ----------
     
-$MOONSLOTH Enhanced Features & Tokenomics:
-- New "Sloth Shot" function; allows the community to vote and spend a specified amount of the Sloth's BNB balance in a buyback, regardless of market conditions.
-- 8% of each transaction goes to the Sloth Wallet [from 6% in EverRise]
+$MOONRISE Enhanced Features & Tokenomics:
+- New "Moon Shot" function; allows the community to vote and spend a specified amount of the Whale's BNB balance in a buyback, regardless of market conditions.
+- 8% of each transaction goes to the Whale Wallet [from 6% in EverRise]
 - 2% of each transaction is redistributed among holders
-- 2% of each transaction goes to the Marketing Wallet [from 3% in EverRise]
+- 1% of each transaction goes to the Marketing Wallet [from 3% in EverRise]
+
 */
 
 
@@ -439,11 +444,11 @@ interface IUniswapV2Router02 is IUniswapV2Router01 {
     ) external;
 }
 
-contract MoonSloth is Context, IERC20, Ownable {
+contract MoonRise is Context, IERC20, Ownable {
     using SafeMath for uint256;
     using Address for address;
     
-    address payable public marketingAddress = payable(0xB0E74A9dC63f77fac79de3B87b5C8b99451eCf52); // Marketing Address
+    address payable public marketingAddress = payable(0x82efC1C9560a9F60005C06C9b1616f1791C690A6); // Marketing Address
     address public immutable deadAddress = 0x000000000000000000000000000000000000dEaD;
     mapping (address => uint256) private _rOwned;
     mapping (address => uint256) private _tOwned;
@@ -455,25 +460,25 @@ contract MoonSloth is Context, IERC20, Ownable {
     address[] private _excluded;
    
     uint256 private constant MAX = ~uint256(0);
-    uint256 private _tTotal = 1000000 * 10**6 * 10**9;
+    uint256 private _tTotal = 1000000000 * 10**6 * 10**9;
     uint256 private _rTotal = (MAX - (MAX % _tTotal));
     uint256 private _tFeeTotal;
 
-    string private _name = "MoonSloth";
-    string private _symbol = "MOONSLOTH";
+    string private _name = "MoonRise";
+    string private _symbol = "MOONRISE";
     uint8 private _decimals = 9;
 
 
     uint256 public _taxFee = 2;
     uint256 private _previousTaxFee = _taxFee;
     
-    uint256 public _liquidityFee = 8;
+    uint256 public _liquidityFee = 9;
     uint256 private _previousLiquidityFee = _liquidityFee;
     
     uint256 public marketingDivisor = 2;
     
-    uint256 public _maxTxAmount = 10000 * 10**6 * 10**9; // 10 billion, or 1% of total supply
-    uint256 private minimumTokensBeforeSwap = 200 * 10**6 * 10**9; 
+    uint256 public _maxTxAmount = 10000000 * 10**6 * 10**9; // 10 trillion, or 1% of total supply
+    uint256 private minimumTokensBeforeSwap = 200000 * 10**6 * 10**9; 
     uint256 private buyBackUpperLimit = 1 * 10**18;
 
     IUniswapV2Router02 public immutable uniswapV2Router;
@@ -690,7 +695,13 @@ contract MoonSloth is Context, IERC20, Ownable {
         _tokenTransfer(from,to,amount,takeFee);
     }
     
-    function callSlothShot(uint256 amount) external onlyOwner(){
+    function callMoonShot(uint256 amount) external onlyOwner(){
+        // MoonShots will be activated at holder milestones during MoonRise's launch phase, but eventually will be controlled through a community-consensus based dApp.
+        // Members will vote on how much BNB should be used in the MoonShot, and when exactly the MoonShot should take place.
+
+        // LIVE HOLDER MILESTONES & MOONSHOT INFO:
+        // - MoonRiseCoin.com
+        // - (Please join our Telegram using the link posted on our website)
         
         buyBackTokens(amount * 10**15); // i.e. "1" would equal 0.001 BNB
     }
@@ -955,14 +966,14 @@ contract MoonSloth is Context, IERC20, Ownable {
         setSwapAndLiquifyEnabled(false);
         _taxFee = 0;
         _liquidityFee = 0;
-        _maxTxAmount = 1000000 * 10**6 * 10**9;
+        _maxTxAmount = 1000000000 * 10**6 * 10**9;
     }
     
     function afterPreSale() external onlyOwner {
         setSwapAndLiquifyEnabled(true);
         _taxFee = 2;
         _liquidityFee = 9;
-        _maxTxAmount = 10000 * 10**6 * 10**9;
+        _maxTxAmount = 10000000 * 10**6 * 10**9;
     }
     
     function transferToAddressETH(address payable recipient, uint256 amount) private {
